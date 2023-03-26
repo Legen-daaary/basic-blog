@@ -39,14 +39,10 @@
     </nav>
 
 
-    <article th:each="entry : ${entries}">
+    <article>
         <header>
             <h1 th:text="${entry.title}">Ez itt a cím</h1>
-            <p>
-                <span th:text="#{postedOn}">Posted on</span>
-                <span
-                        th:text="${#temporals.format(entry.posted, 'yyyy-MM-dd HH:mm:ss')}">March 25, 2023 at 10:00 PM
-                </span>
+            <p>Posted on <span th:text="${#temporals.format(entry.posted, 'yyyy-MM-dd HH:mm:ss')}">March 25, 2023 at 10:00 PM</span>
             </p>
         </header>
 
@@ -64,7 +60,7 @@
 
         <footer>
             <address>
-                <span th:text="#{author}">Author</span>: <span th:text="${entry.blogger.name}">Anonymous</span>
+                Author: <span th:text="${entry.blogger.name}">Anonymous</span>
             </address>
         </footer>
         <hr/>

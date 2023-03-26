@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 class EntryServiceImpl implements EntryService {
     private EntryRepository entryRepository;
@@ -18,5 +20,15 @@ class EntryServiceImpl implements EntryService {
     @Override
     public List<Entry> getEntries() {
         return this.entryRepository.findAll();
+    }
+
+    @Override
+    public Optional<Entry> getLatest() {
+        return this.entryRepository.findFirstByOrderByPostedDesc();
+    }
+
+    @Override
+    public Optional<Entry> getByTitle(String title) {
+        return this.entryRepository.findByTitle(title);
     }
 }
